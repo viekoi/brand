@@ -1,0 +1,48 @@
+.content {
+  padding: 22px 0 40px 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 20px;
+  .filter {
+    grid-column: 3 span / 3 span;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .inputLabel {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      color: var(--dark, #1c1c1c);
+      font-feature-settings:
+        "clig" off,
+        "liga" off;
+
+      /* Title-H6 */
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      input {
+        padding: 5px;
+        width: 100%;
+        outline: none;
+        border-radius: 6px;
+        border: 1px solid var(--primary, #0d6efd);
+       
+      }
+
+      .error-text{
+        font-size: 10px;
+        color: red;
+      }
+    }
+  }
+
+  .list {
+    grid-column: 9 span / 9 span;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}

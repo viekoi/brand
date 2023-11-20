@@ -1,0 +1,22 @@
+
+.icon-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    column-gap: 15px;
+    .bag-icon{
+        position: relative;
+    
+        .shadow{
+            position: absolute;
+            transform: translateX(-85%);
+        }
+        .bag{
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top:50%;
+            left:50%;
+        }
+    }
+}
+

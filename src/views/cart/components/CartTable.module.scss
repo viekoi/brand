@@ -1,0 +1,106 @@
+.cart-table {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  width: 880px;
+  min-height: 552px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid var(--gray-300, #dee2e7);
+  background: var(--base-color-white, #fff);
+  padding: 23px 20px 20px 20px;
+  gap: 20px;
+
+  .table-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-300, #dee2e7);
+  .top-section {
+    display: flex;
+    justify-content: space-between;
+    .left-section {
+      display: flex;
+      gap: 15px;
+      .image-wrapper {
+        cursor: pointer;
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+        border-radius: 6px;
+        border: 1px solid var(--base-color-gray-200, #e0e0e0);
+        background: #f7f7f7;
+        padding: 5px;
+        background-color: #fff;
+
+        .product-image {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          padding-top: 50%;
+          object-fit: cover;
+        }
+      }
+
+      .info-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .product-name {
+          cursor: pointer;
+          color: var(--dark, #1c1c1c);
+          font-feature-settings:
+            "clig" off,
+            "liga" off;
+          /* Text-title */
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 22px; /* 137.5% */
+        }
+
+        .product-description {
+          color: var(--gray-500, #8b96a5);
+          font-feature-settings:
+            "clig" off,
+            "liga" off;
+          /* Text-info */
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px; /* 150% */
+          letter-spacing: -0.2px;
+        }
+      }
+    }
+
+    .right-section {
+      margin-top: 6px;
+      display: flex;
+      height: fit-content;
+      align-items: center;
+      gap: 10px;
+      
+
+      .amount-select {
+        position: relative;
+        padding: 11px 10px 10px 10px;
+        width: 123px;
+        border: 1px solid var(--gray-300, #dee2e7);
+        border-radius: 6px;
+        outline: none;
+        background-color: #fff;
+      }
+    }
+  }
+
+ 
+}
