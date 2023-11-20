@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 import styles from "./Search.module.scss";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -27,6 +27,7 @@ const SearchView = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const searchTerms = qs.parse(location.search);
+  console.log(searchTerms)
   const productsBySearchTerms = findProductsSearchTerms(searchTerms);
   const {
     control,
@@ -35,7 +36,13 @@ const SearchView = () => {
     formState: { errors },
     watch,
     reset
-  } = useForm<FilterShema>();
+  } = useForm<FilterShema>({
+    defaultValues: useMemo(() => {
+      return {
+        ...searchTerms
+      };
+  }, [location.search])
+  });
 
   const onSubmit: SubmitHandler<FilterShema> = (data) => {
     const { categoryId, minPrice, maxPrice } = data;
@@ -55,6 +62,7 @@ const SearchView = () => {
     setIsLoading(false);
     if (location.search === "") {
       setHaveFilters(false);
+      reset()
     } else {
       setHaveFilters(true);
     }
@@ -84,12 +92,16 @@ const SearchView = () => {
               })}
               placeholder="ex: 5$"
             />
-            {errors.minPrice && <span></span>}
+            {errors.minPrice && (
+              <div className={styles[`error-text`]}>
+                Min price has to be a positive number 
+              </div>
+            )}
           </label>
 
           <label className={styles[`inputLabel`]}>
             Max price
-            <input
+            <input 
               {...register("maxPrice", {
                 min: watch("minPrice") > 0 ? watch("minPrice") : 0,
               })}
@@ -97,7 +109,7 @@ const SearchView = () => {
             />
             {errors.maxPrice && (
               <div className={styles[`error-text`]}>
-                Min price has to be greater or equal to min price
+                Min price has to be a positive number greater or equal to min price
               </div>
             )}
           </label>
@@ -114,7 +126,6 @@ const SearchView = () => {
           <CustomButton
             onClick={() => {
               navigate(`/search`)
-              reset()
             }}
             outline={false}
             disable={haveFilters}

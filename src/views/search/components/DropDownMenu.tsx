@@ -39,7 +39,7 @@ const DropDownMenu = (props: DropDownMenuProps) => {
                   {category.subcategories.map((cate) => {
                     return (
                       <label className={styles.item} key={cate.id}>
-                        <input type="radio" {...field} value={cate.id} />
+                        <input type="radio" checked={cate.id === field.value} {...field} value={cate.id} />
                         {cate.name}
                       </label>
                     );
